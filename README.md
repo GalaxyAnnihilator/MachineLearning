@@ -1,4 +1,4 @@
-# # Machine Learning Practice Repository
+# Machine Learning Practice Repository
 
 Welcome to my Machine Learning Practice repository! This repository is a collection of my hands-on practice and experiments with fundamental machine learning algorithms and concepts. It serves as a personal learning resource and a showcase of my progress in the field of machine learning.
 

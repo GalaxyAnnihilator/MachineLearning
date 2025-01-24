@@ -1,31 +1,24 @@
 #include <stdio.h>
-
+#include <math.h>
 /*
-Input: Ba canh a,b,c cua mot tam giac
-Output: Loai tam giac: vuong, can, deu, thuong
+nhap hai so a , b
+swap gia tri a , b
+khong dung bien thu 3
+
+VD: a = 5, b = 10
+sau khi swap: a = 10, b = 5
 */
 
 int main(){
-    float a,b,c;
-    printf("Enter the edges of the triangle: ");
-    scanf("%f %f %f",&a, &b, &c);
-    if (a+b>c && b+c>a && a+c>b){
-        if (a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a ){
-            printf("Tam giac vuong");
-        }
-        else if (a==b && b==c){
-            printf("Tam giac deu");
-        }
-        else if (a==b || b==c || a==c){
-            printf("Tam giac can");
-        }
-        else{
-            printf("Tam giac thuong");
-        }
-    }
-    else{
-        printf("Khong phai tam giac");
-    }
-    printf("\n");
+    int a,b;
+    a = 5;
+    b = 10;
+    printf("Before swapping: a = %d, b = %d\n",a,b);
+
+    a = a*b; // a = 50, b = 10
+    b = a/b; // a = 50, b = 5
+    a = a/b; // a = 10, b = 5
+
+    printf("After swapping: a = %d , b = %d\n",a,b);
     return 0;
 }

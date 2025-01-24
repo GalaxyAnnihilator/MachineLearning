@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Logistic regression model parameters
 theta = np.array([0, 0, 0], dtype=float)
-alpha = 0.001
+alpha = 0.0001
 iterations = 100
 X = np.array([
     [1, 172, 68],
