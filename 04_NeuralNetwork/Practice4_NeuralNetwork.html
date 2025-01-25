@@ -7517,7 +7517,7 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="-Neural-Networks-"><center style="color:red"> <strong>Neural Networks</strong> </center><a class="anchor-link" href="#-Neural-Networks-">¶</a></h1><h4 style="text-align:right">By Trần Minh Dương - Learning Support</h4>
-<h1 id="Overview">Overview<a class="anchor-link" href="#Overview">¶</a></h1><p>Neural networks are powerful models inspired by the human brain, capable of learning complex patterns from data. They consist of interconnected layers of neurons that process information and transform inputs into meaningful outputs. From image recognition to natural language processing, neural networks are a cornerstone of modern Artificial Intelligence (AI).</p>
+<h1 id="Overview">Overview<a class="anchor-link" href="#Overview">¶</a></h1><p>Neural networks are powerful models inspired by the human brain, capable of learning complex patterns from data. They consist of interconnected layers of neurons that process information and transform inputs into meaningful outputs. From image recognition to natural language processing, this document aims to uncover how neural networks are trained.</p>
 <h2 id="1.-Architecture">1. Architecture<a class="anchor-link" href="#1.-Architecture">¶</a></h2><p>A typical neural network is composed of the following:</p>
 <ul>
 <li><strong>Input Layer</strong>: Receives raw data (features) and feeds it into the network.</li>
@@ -7539,7 +7539,7 @@ a.anchor-link {
 </center>
 <p>To calculate the next node in a neural network, we do the following:</p>
 <ul>
-<li>Calculate the weighted sum of $x_i$ with $w_i$:</li>
+<li>Calculate the weighted sum of the previous nodes $x_i$:</li>
 </ul>
 $$ x_j = \sum_{i} x_{i} \cdot w_{ij} = x_{1} \cdot w_{1j} + x_{2} \cdot w_{2j} + ...$$<ul>
 <li>Pass it through the activation function:</li>
@@ -7594,9 +7594,9 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">¶</a></h1><p>Given the following neural network:</p>
+<h1 id="Exercise"><strong>Exercise</strong><a class="anchor-link" href="#Exercise">¶</a></h1><p>Given the following neural network:</p>
 <center>
-<img alt="No description has been provided for this image" src="../images/neuralnetworkexercise.png" width="70%"/>
+<img alt="No description has been provided for this image" src="../images/neuralnetworkexercise.png" width="60%"/>
 </center>
 <p>Weights:</p>
 <p>$w_{13} = 2 , w_{23} = -3 $</p>
@@ -7622,7 +7622,7 @@ $$</p>
 <p>a) Predict the output with inputs: $x_1 = 1$ and $x_2 = -1$</p>
 <p>b) Knowing that the actual output is y = 0, the loss function is given as:
 $$
-\text{Loss} = \frac{1}{2} \cdot (y_{\text{predicted}} - y_{\text{actual}})^2
+\text{Loss} = \frac{1}{2} \cdot (y_{\text{output}} - y_{\text{actual}})^2
 $$</p>
 <p>Using back-propagation, evaluate the weights after one iteration with $\eta = 0.1$.</p>
 <hr/>
@@ -7656,7 +7656,7 @@ $$</p>
 <p><strong>Prediction:</strong><br/>
 The output of the neural network is:<br/>
 $$
-y_{\text{predicted}} = y_5 = 10
+y_{\text{output}} = y_5 = 10
 $$</p>
 <hr/>
 <h3 id="b)-Back-propagation">b) Back-propagation<a class="anchor-link" href="#b)-Back-propagation">¶</a></h3><center>
@@ -7667,7 +7667,7 @@ $$</p>
 <li>Actual output: $ y = 0 $</li>
 <li>Loss function:
 $$
-\text{Loss} = \frac{1}{2} \cdot (y_{\text{predicted}} - y_{\text{actual}})^2
+\text{Loss} = \frac{1}{2} \cdot (y_{\text{output}} - y_{\text{actual}})^2
 $$</li>
 </ul>
 <p><strong>Error at the output node $ y_5 $:</strong>
@@ -7712,12 +7712,100 @@ $$
 $$
 w_{24} = w_{24} - \eta \cdot \delta_4 \cdot x_2 = 4 - 0.1 \cdot 0 \cdot (-1) = 4
 $$</p>
-<hr/>
 <h3 id="Final-updated-weights:">Final updated weights:<a class="anchor-link" href="#Final-updated-weights:">¶</a></h3><ul>
 <li>$ w_{13} = 0, \, w_{23} = -1 $</li>
 <li>$ w_{14} = 1, \, w_{24} = 4 $</li>
 <li>$ w_{35} = -3, \, w_{45} = -1 $</li>
 </ul>
+<hr/>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Weights</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"w13"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"w23"</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"w14"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"w24"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">"w35"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"w45"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="c1"># Activation function</span>
+<span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">relu_derivative</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span>
+
+<span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">y_actual</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Forward pass</span>
+<span class="k">def</span> <span class="nf">forward_pass</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w13"</span><span class="p">]</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w23"</span><span class="p">]</span>
+    <span class="n">y3</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+
+    <span class="n">x4</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w14"</span><span class="p">]</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w24"</span><span class="p">]</span>
+    <span class="n">y4</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
+
+    <span class="n">x5</span> <span class="o">=</span> <span class="n">y3</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w35"</span><span class="p">]</span> <span class="o">+</span> <span class="n">y4</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w45"</span><span class="p">]</span>
+    <span class="n">y5</span> <span class="o">=</span> <span class="n">relu</span><span class="p">(</span><span class="n">x5</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"x3"</span><span class="p">:</span> <span class="n">x3</span><span class="p">,</span> <span class="s2">"y3"</span><span class="p">:</span> <span class="n">y3</span><span class="p">,</span> <span class="s2">"x4"</span><span class="p">:</span> <span class="n">x4</span><span class="p">,</span> <span class="s2">"y4"</span><span class="p">:</span> <span class="n">y4</span><span class="p">,</span> <span class="s2">"x5"</span><span class="p">:</span> <span class="n">x5</span><span class="p">,</span> <span class="s2">"y5"</span><span class="p">:</span> <span class="n">y5</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">back_propagation</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">forward_values</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">eta</span><span class="p">):</span>
+    <span class="n">y5</span> <span class="o">=</span> <span class="n">forward_values</span><span class="p">[</span><span class="s2">"y5"</span><span class="p">]</span>
+    <span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">forward_values</span><span class="p">[</span><span class="s2">"x3"</span><span class="p">],</span> <span class="n">forward_values</span><span class="p">[</span><span class="s2">"y3"</span><span class="p">]</span>
+    <span class="n">x4</span><span class="p">,</span> <span class="n">y4</span> <span class="o">=</span> <span class="n">forward_values</span><span class="p">[</span><span class="s2">"x4"</span><span class="p">],</span> <span class="n">forward_values</span><span class="p">[</span><span class="s2">"y4"</span><span class="p">]</span>
+    <span class="n">x5</span> <span class="o">=</span> <span class="n">forward_values</span><span class="p">[</span><span class="s2">"x5"</span><span class="p">]</span>
+
+    <span class="c1"># Compute error signals</span>
+    <span class="n">delta5</span> <span class="o">=</span> <span class="p">(</span><span class="n">y5</span> <span class="o">-</span> <span class="n">y_actual</span><span class="p">)</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="n">x5</span><span class="p">)</span>
+    <span class="n">delta3</span> <span class="o">=</span> <span class="n">delta5</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w35"</span><span class="p">]</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+    <span class="n">delta4</span> <span class="o">=</span> <span class="n">delta5</span> <span class="o">*</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"w45"</span><span class="p">]</span> <span class="o">*</span> <span class="n">relu_derivative</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
+
+    <span class="c1"># Update weights</span>
+    <span class="n">weights</span><span class="p">[</span><span class="s2">"w35"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta5</span> <span class="o">*</span> <span class="n">y3</span>
+    <span class="n">weights</span><span class="p">[</span><span class="s2">"w45"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta5</span> <span class="o">*</span> <span class="n">y4</span>
+
+    <span class="n">weights</span><span class="p">[</span><span class="s2">"w13"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta3</span> <span class="o">*</span> <span class="n">x1</span>
+    <span class="n">weights</span><span class="p">[</span><span class="s2">"w23"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta3</span> <span class="o">*</span> <span class="n">x2</span>
+
+    <span class="n">weights</span><span class="p">[</span><span class="s2">"w14"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta4</span> <span class="o">*</span> <span class="n">x1</span>
+    <span class="n">weights</span><span class="p">[</span><span class="s2">"w24"</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">delta4</span> <span class="o">*</span> <span class="n">x2</span>
+
+    <span class="k">return</span> <span class="n">weights</span>
+
+<span class="n">forward_values</span> <span class="o">=</span> <span class="n">forward_pass</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Forward pass outputs:"</span><span class="p">,</span> <span class="n">forward_values</span><span class="p">)</span>
+
+<span class="n">updated_weights</span> <span class="o">=</span> <span class="n">back_propagation</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">forward_values</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y_actual</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Updated weights:"</span><span class="p">,</span> <span class="n">updated_weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Forward pass outputs: {'x3': 5, 'y3': 5, 'x4': -3, 'y4': 0, 'x5': 10, 'y5': 10}
+Updated weights: {'w13': 0.0, 'w23': -1.0, 'w14': 1.0, 'w24': 4.0, 'w35': -3.0, 'w45': -1.0}
+</pre>
+</div>
 </div>
 </div>
 </div>
